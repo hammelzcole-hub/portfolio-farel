@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Farel Rizky | Nature Portfolio</title>
+<title>Farel Rizky | 3D Nature Portfolio</title>
 
 <style>
 * {
@@ -14,10 +14,6 @@
     scroll-behavior: smooth;
 }
 
-html {
-    scroll-padding-top: 85px;
-}
-
 body {
     font-family: Arial, sans-serif;
     background: #071b20;
@@ -25,13 +21,16 @@ body {
     line-height: 1.7;
 }
 
-/* NAVBAR */
+html {
+    scroll-padding-top: 85px;
+}
+
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 18px 8%;
-    background: rgba(5, 25, 29, 0.85);
+    background: rgba(5, 25, 29, .88);
     backdrop-filter: blur(15px);
     border-bottom: 1px solid #315b55;
     position: sticky;
@@ -54,50 +53,43 @@ nav ul {
 nav a {
     color: #e0f2e9;
     text-decoration: none;
-    transition: 0.3s;
+    transition: .3s;
 }
 
 nav a:hover {
     color: #86efac;
 }
 
-/* HERO */
+/* 3D HERO */
 .hero {
     min-height: 90vh;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    gap: 50px;
     padding: 70px 10%;
     position: relative;
     overflow: hidden;
-    background:
-        radial-gradient(circle at 75% 25%, #fcd98b55, transparent 20%),
-        linear-gradient(180deg, #123c45 0%, #28665f 48%, #102e2d 100%);
+    background: linear-gradient(#102f42, #28665f 65%, #102e2d);
 }
 
-.hero::before {
-    content: "";
+#nature3d {
     position: absolute;
-    width: 650px;
-    height: 350px;
-    background: #f4d28b;
-    filter: blur(100px);
-    opacity: 0.18;
-    top: 0;
-    right: 5%;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
 }
 
 .hero::after {
     content: "";
     position: absolute;
-    width: 120%;
-    height: 220px;
-    left: -10%;
-    bottom: -100px;
-    background: #092b27;
-    border-radius: 50% 50% 0 0;
-    box-shadow: 0 -25px 80px #7dd3a455;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(4, 22, 27, .75),
+        rgba(4, 22, 27, .15)
+    );
+    pointer-events: none;
+    z-index: 1;
 }
 
 .hero-text {
@@ -134,73 +126,6 @@ nav a:hover {
     margin-bottom: 30px;
 }
 
-/* MOUNTAIN SCENERY */
-.scenery {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 65%;
-    height: 75%;
-    pointer-events: none;
-}
-
-.sun {
-    position: absolute;
-    width: 115px;
-    height: 115px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #fff4c2, #f5bd70);
-    top: 12%;
-    right: 28%;
-    box-shadow: 0 0 70px #ffe6a588;
-}
-
-.mountain {
-    position: absolute;
-    bottom: 0;
-    width: 0;
-    height: 0;
-    border-left: 230px solid transparent;
-    border-right: 230px solid transparent;
-}
-
-.mountain-one {
-    right: 20%;
-    border-bottom: 360px solid #244e4b;
-}
-
-.mountain-two {
-    right: -5%;
-    border-bottom: 270px solid #376c5c;
-}
-
-.mountain-three {
-    right: 45%;
-    border-bottom: 230px solid #527d63;
-}
-
-.mountain::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -45px;
-    width: 90px;
-    height: 65px;
-    background: #d9eee0;
-    clip-path: polygon(50% 0, 100% 100%, 50% 70%, 0 100%);
-}
-
-.lake {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 75px;
-    background: linear-gradient(180deg, #4a9990, #123f40);
-    opacity: 0.9;
-}
-
-/* BUTTON */
 .buttons {
     display: flex;
     flex-wrap: wrap;
@@ -213,7 +138,7 @@ nav a:hover {
     border-radius: 30px;
     text-decoration: none;
     font-weight: bold;
-    transition: 0.3s;
+    transition: .3s;
 }
 
 .btn-primary {
@@ -231,17 +156,18 @@ nav a:hover {
     box-shadow: 0 8px 25px #86efac55;
 }
 
-/* PROFILE IMAGE */
+/* PROFILE */
 .profile-container {
-    width: 300px;
-    height: 300px;
-    min-width: 300px;
+    width: 250px;
+    height: 250px;
+    min-width: 250px;
     border-radius: 50%;
-    padding: 8px;
+    padding: 7px;
     background: linear-gradient(135deg, #d1fae5, #65a98b, #d6b879);
     box-shadow: 0 0 50px #a7f3d055;
     overflow: hidden;
-    position: relative;
+    position: absolute;
+    right: 10%;
     z-index: 2;
 }
 
@@ -253,7 +179,7 @@ nav a:hover {
     border: 5px solid #123c35;
 }
 
-/* GENERAL SECTION */
+/* SECTIONS */
 section:not(.hero) {
     padding: 85px 10%;
 }
@@ -268,7 +194,6 @@ section:not(.hero) {
     color: #86cba9;
 }
 
-/* ABOUT */
 .about {
     background: linear-gradient(135deg, #102f2d, #19433b);
     text-align: center;
@@ -281,28 +206,29 @@ section:not(.hero) {
     font-size: 17px;
 }
 
-/* SKILLS */
 #skills {
     background: linear-gradient(180deg, #092724, #123a32);
 }
 
-.skills-container {
+.skills-container,
+.projects-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 22px;
 }
 
 .skill-card {
-    background: rgba(171, 229, 197, 0.08);
+    background: rgba(171, 229, 197, .08);
     border: 1px solid #477b65;
     border-radius: 18px;
     padding: 27px;
     text-align: center;
     backdrop-filter: blur(10px);
-    transition: 0.3s;
+    transition: .3s;
 }
 
-.skill-card:hover {
+.skill-card:hover,
+.project-card:hover {
     transform: translateY(-7px);
     border-color: #a7f3d0;
     box-shadow: 0 12px 30px #00000033;
@@ -313,17 +239,18 @@ section:not(.hero) {
     margin-bottom: 12px;
 }
 
-.skill-card h3 {
+.skill-card h3,
+.project-info h3 {
     color: #a7f3d0;
     margin-bottom: 8px;
 }
 
-.skill-card p {
+.skill-card p,
+.project-info p {
     color: #c7e2d5;
     font-size: 14px;
 }
 
-/* PROJECTS */
 .projects {
     background: linear-gradient(180deg, #123a32, #092724);
 }
@@ -335,24 +262,12 @@ section:not(.hero) {
     margin-bottom: 40px;
 }
 
-.projects-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 25px;
-}
-
 .project-card {
     background: #173d35;
     border: 1px solid #477b65;
     border-radius: 18px;
     overflow: hidden;
-    transition: 0.3s;
-}
-
-.project-card:hover {
-    transform: translateY(-8px);
-    border-color: #a7f3d0;
-    box-shadow: 0 10px 30px #00000044;
+    transition: .3s;
 }
 
 .project-image {
@@ -379,16 +294,6 @@ section:not(.hero) {
     padding: 25px;
 }
 
-.project-info h3 {
-    color: #a7f3d0;
-    margin-bottom: 10px;
-}
-
-.project-info p {
-    color: #c7e2d5;
-    font-size: 14px;
-}
-
 .project-tag {
     display: inline-block;
     margin-top: 15px;
@@ -399,7 +304,6 @@ section:not(.hero) {
     font-size: 12px;
 }
 
-/* CONTACT */
 .contact {
     background: linear-gradient(135deg, #19433b, #0b2928);
     text-align: center;
@@ -417,7 +321,6 @@ section:not(.hero) {
     gap: 15px;
 }
 
-/* FOOTER */
 footer {
     background: #061b19;
     text-align: center;
@@ -429,21 +332,22 @@ footer {
 /* RESPONSIVE */
 @media (max-width: 800px) {
     .hero {
-        flex-direction: column-reverse;
+        min-height: 100vh;
+        justify-content: center;
         text-align: center;
         padding: 60px 7%;
     }
 
-    .scenery {
-        width: 100%;
-        height: 45%;
-        opacity: 0.5;
+    .hero-text {
+        margin-top: 180px;
     }
 
     .profile-container {
-        width: 230px;
-        height: 230px;
-        min-width: 230px;
+        width: 135px;
+        height: 135px;
+        min-width: 135px;
+        top: 30px;
+        right: auto;
     }
 
     .buttons {
@@ -461,10 +365,6 @@ footer {
         justify-content: center;
     }
 
-    .hero h1 {
-        font-size: 40px;
-    }
-
     section:not(.hero) {
         padding: 65px 7%;
     }
@@ -475,19 +375,12 @@ footer {
         gap: 10px;
         font-size: 13px;
     }
-
-    .profile-container {
-        width: 190px;
-        height: 190px;
-        min-width: 190px;
-    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
 <nav>
     <div class="logo">Farel.</div>
     <ul>
@@ -499,8 +392,9 @@ footer {
     </ul>
 </nav>
 
-<!-- HERO SECTION -->
 <section class="hero" id="home">
+
+    <canvas id="nature3d"></canvas>
 
     <div class="hero-text">
         <p class="welcome">WELCOME TO MY PORTFOLIO</p>
@@ -529,23 +423,10 @@ footer {
     <div class="profile-container">
         <img src="foto-farel.jpg" alt="Foto profil Farel">
     </div>
-
-    <div class="scenery">
-        <div class="sun"></div>
-        <div class="mountain mountain-one"></div>
-        <div class="mountain mountain-two"></div>
-        <div class="mountain mountain-three"></div>
-        <div class="lake"></div>
-    </div>
-
 </section>
 
-<!-- ABOUT SECTION -->
 <section class="about" id="about">
-    <h2 class="section-title">
-        About <span>Me</span>
-    </h2>
-
+    <h2 class="section-title">About <span>Me</span></h2>
     <p>
         Halo! Saya seorang pelajar yang tertarik dengan dunia
         teknologi, khususnya pengembangan website. Saat ini saya
@@ -554,14 +435,10 @@ footer {
     </p>
 </section>
 
-<!-- SKILLS SECTION -->
 <section id="skills">
-    <h2 class="section-title">
-        My <span>Skills</span>
-    </h2>
+    <h2 class="section-title">My <span>Skills</span></h2>
 
     <div class="skills-container">
-
         <div class="skill-card">
             <div class="skill-icon">🌐</div>
             <h3>HTML</h3>
@@ -579,22 +456,17 @@ footer {
             <h3>Web Design</h3>
             <p>Membuat tampilan website yang sederhana dan menarik.</p>
         </div>
-
     </div>
 </section>
 
-<!-- PROJECTS SECTION -->
 <section class="projects" id="projects">
-    <h2 class="section-title">
-        My <span>Projects</span>
-    </h2>
+    <h2 class="section-title">My <span>Projects</span></h2>
 
     <p class="projects-description">
         Beberapa contoh project yang sedang saya pelajari.
     </p>
 
     <div class="projects-container">
-
         <div class="project-card">
             <div class="project-image project-one">🌐</div>
             <div class="project-info">
@@ -630,15 +502,11 @@ footer {
                 <span class="project-tag">Practice Project</span>
             </div>
         </div>
-
     </div>
 </section>
 
-<!-- CONTACT SECTION -->
 <section class="contact" id="contact">
-    <h2 class="section-title">
-        Contact <span>Me</span>
-    </h2>
+    <h2 class="section-title">Contact <span>Me</span></h2>
 
     <p>
         Terima kasih sudah mengunjungi portfolio saya.
@@ -646,7 +514,6 @@ footer {
     </p>
 
     <div class="contact-buttons">
-
         <a
             href="https://mail.google.com/mail/?view=cm&fs=1&to=hammelzcole@gmail.com"
             target="_blank"
@@ -673,16 +540,300 @@ footer {
         >
             📷 Instagram
         </a>
-
     </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-    <p>
-        &copy; 2026 Farel Rizky. All Rights Reserved.
-    </p>
+    <p>&copy; 2026 Farel Rizky. All Rights Reserved.</p>
 </footer>
+
+<!-- THREE.JS -->
+<script type="importmap">
+{
+    "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
+    }
+}
+</script>
+
+<script type="module">
+import * as THREE from "three";
+
+const canvas = document.querySelector("#nature3d");
+const hero = document.querySelector(".hero");
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x183e4b);
+scene.fog = new THREE.FogExp2(0x183e4b, 0.012);
+
+const camera = new THREE.PerspectiveCamera(
+    55,
+    hero.clientWidth / hero.clientHeight,
+    0.1,
+    1000
+);
+
+camera.position.set(0, 7, 25);
+
+const renderer = new THREE.WebGLRenderer({
+    canvas,
+    antialias: true,
+    alpha: true
+});
+
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(hero.clientWidth, hero.clientHeight);
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+scene.add(new THREE.AmbientLight(0xffffff, 1.5));
+
+const sunlight = new THREE.DirectionalLight(0xffe3b0, 3);
+sunlight.position.set(-10, 20, 10);
+sunlight.castShadow = true;
+scene.add(sunlight);
+
+/* SUN */
+const sun = new THREE.Mesh(
+    new THREE.SphereGeometry(2.3, 48, 48),
+    new THREE.MeshBasicMaterial({ color: 0xffe5a1 })
+);
+sun.position.set(8, 12, -22);
+scene.add(sun);
+
+/* MOUNTAINS */
+function createMountain(x, y, z, radius, height, color) {
+    const geometry = new THREE.ConeGeometry(
+        radius, height, 5, 1
+    );
+
+    const material = new THREE.MeshStandardMaterial({
+        color,
+        flatShading: true,
+        roughness: 1
+    });
+
+    const mountain = new THREE.Mesh(geometry, material);
+    mountain.position.set(x, y, z);
+    mountain.rotation.y = Math.random() * Math.PI;
+    mountain.castShadow = true;
+    mountain.receiveShadow = true;
+    scene.add(mountain);
+
+    return mountain;
+}
+
+createMountain(-13, 2, -12, 9, 17, 0x315c60);
+createMountain(-3, 3, -16, 11, 20, 0x416e6a);
+createMountain(9, 2, -13, 10, 18, 0x315b55);
+createMountain(19, 2, -18, 12, 20, 0x244a49);
+createMountain(-20, 1, -20, 11, 17, 0x527c70);
+
+/* SNOW CAPS */
+function createSnow(x, y, z, radius, height) {
+    const snow = new THREE.Mesh(
+        new THREE.ConeGeometry(radius, height, 5),
+        new THREE.MeshStandardMaterial({
+            color: 0xe4eee2,
+            flatShading: true
+        })
+    );
+
+    snow.position.set(x, y, z);
+    scene.add(snow);
+}
+
+createSnow(-3, 10, -16, 3.4, 6);
+createSnow(9, 10, -13, 3.1, 5.5);
+createSnow(-13, 9, -12, 2.8, 5);
+
+/* GROUND */
+const ground = new THREE.Mesh(
+    new THREE.PlaneGeometry(200, 100),
+    new THREE.MeshStandardMaterial({
+        color: 0x173d32,
+        roughness: 0.85
+    })
+);
+
+ground.rotation.x = -Math.PI / 2;
+ground.position.set(0, -1, -10);
+ground.receiveShadow = true;
+scene.add(ground);
+
+/* LAKE */
+const lake = new THREE.Mesh(
+    new THREE.PlaneGeometry(200, 100),
+    new THREE.MeshStandardMaterial({
+        color: 0x347f82,
+        roughness: 0.18,
+        metalness: 0.25
+    })
+);
+
+lake.rotation.x = -Math.PI / 2;
+lake.position.set(0, -0.8, 8);
+scene.add(lake);
+
+/* TREES */
+function createTree(x, z, scale = 1) {
+    const group = new THREE.Group();
+
+    const trunk = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.15, 0.22, 2, 6),
+        new THREE.MeshStandardMaterial({ color: 0x60452d })
+    );
+
+    trunk.position.y = 1;
+    group.add(trunk);
+
+    for (let i = 0; i < 3; i++) {
+        const leaves = new THREE.Mesh(
+            new THREE.ConeGeometry(1.3 - i * 0.2, 2.8, 7),
+            new THREE.MeshStandardMaterial({
+                color: i % 2 ? 0x245b45 : 0x347653,
+                flatShading: true
+            })
+        );
+
+        leaves.position.y = 2 + i * 1.25;
+        group.add(leaves);
+    }
+
+    group.position.set(x, -1, z);
+    group.scale.setScalar(scale);
+    scene.add(group);
+}
+
+for (let i = 0; i < 35; i++) {
+    createTree(
+        (Math.random() - 0.5) * 60,
+        Math.random() * 12 - 1,
+        0.6 + Math.random() * 1
+    );
+}
+
+/* CLOUDS */
+const clouds = [];
+
+function createCloud(x, y, z) {
+    const cloud = new THREE.Group();
+
+    for (let i = 0; i < 5; i++) {
+        const puff = new THREE.Mesh(
+            new THREE.SphereGeometry(
+                1.1 + Math.random() * 0.7,
+                16, 16
+            ),
+            new THREE.MeshStandardMaterial({
+                color: 0xf1f4e8,
+                transparent: true,
+                opacity: 0.8,
+                roughness: 1
+            })
+        );
+
+        puff.position.set(
+            i * 1.3 - 2,
+            Math.random() * 0.7,
+            Math.random()
+        );
+
+        cloud.add(puff);
+    }
+
+    cloud.position.set(x, y, z);
+    scene.add(cloud);
+    clouds.push(cloud);
+}
+
+createCloud(-15, 13, -15);
+createCloud(2, 16, -25);
+createCloud(18, 12, -18);
+createCloud(25, 17, -30);
+
+/* PARTICLES */
+const particleCount = 450;
+const positions = new Float32Array(particleCount * 3);
+
+for (let i = 0; i < particleCount; i++) {
+    positions[i * 3] = (Math.random() - 0.5) * 70;
+    positions[i * 3 + 1] = Math.random() * 25;
+    positions[i * 3 + 2] = (Math.random() - 0.5) * 60;
+}
+
+const particleGeometry = new THREE.BufferGeometry();
+particleGeometry.setAttribute(
+    "position",
+    new THREE.BufferAttribute(positions, 3)
+);
+
+const particles = new THREE.Points(
+    particleGeometry,
+    new THREE.PointsMaterial({
+        color: 0xd8f5d8,
+        size: 0.09,
+        transparent: true,
+        opacity: 0.65
+    })
+);
+
+scene.add(particles);
+
+/* MOUSE MOVEMENT */
+let mouseX = 0;
+let mouseY = 0;
+
+window.addEventListener("pointermove", (event) => {
+    mouseX = (event.clientX / window.innerWidth - 0.5) * 2;
+    mouseY = (event.clientY / window.innerHeight - 0.5) * 2;
+});
+
+/* ANIMATION */
+const clock = new THREE.Clock();
+
+function animate() {
+    requestAnimationFrame(animate);
+
+    const time = clock.getElapsedTime();
+
+    camera.position.x +=
+        (mouseX * 2.5 - camera.position.x) * 0.025;
+
+    camera.position.y +=
+        (7 - mouseY * 1.5 - camera.position.y) * 0.025;
+
+    camera.lookAt(mouseX * 1.5, 3, -5);
+
+    clouds.forEach((cloud, index) => {
+        cloud.position.x += 0.012 + index * 0.002;
+
+        if (cloud.position.x > 35) {
+            cloud.position.x = -35;
+        }
+    });
+
+    particles.rotation.y = time * 0.008;
+    lake.position.z = 8 + Math.sin(time * 0.5) * 0.12;
+
+    renderer.render(scene, camera);
+}
+
+animate();
+
+/* RESPONSIVE RESIZE */
+window.addEventListener("resize", () => {
+    const width = hero.clientWidth;
+    const height = hero.clientHeight;
+
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize(width, height);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+});
+</script>
 
 </body>
 </html>
